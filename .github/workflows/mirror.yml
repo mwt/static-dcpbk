@@ -37,7 +37,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       - name: Download the files
-        run: wget -m --retry-connrefused --tries=20 --no-host-directories --directory-prefix="www" --exclude-directories="/wp-json,/wp-admin" --regex-type 'pcre' --reject-regex '.*\?(?!ver).*|xmlrpc\.php$' --wait 1 https://www.dcpbk.org/
+        run: wget -m --retry-connrefused --tries=20 --no-host-directories --directory-prefix="www" --exclude-directories="/wp-json,/wp-admin" --regex-type 'pcre' --reject-regex '.*\?(?!ver).*' --wait 1 --execute robots=off https://www.dcpbk.org/
       - name: Download 404
         run: wget --content-on-error --directory-prefix="www" https://www.dcpbk.org/404.html || echo "Expexted error"
 
